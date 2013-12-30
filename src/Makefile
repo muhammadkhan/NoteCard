@@ -1,6 +1,6 @@
 #set compiler
 CC = g++
-CFLAGS = -Wall -c
+CFLAGS = -std=c++11 -Wall -c
 OUTPUT_DIR = ./bin/
 EXECUTABLE = notecard
 
@@ -17,3 +17,7 @@ $(OUTPUT_DIR)CardSet.o: CardSet.cpp CardSet.h
 
 $(OUTPUT_DIR)simulator.o: simulator.cpp
 	$(CC) $(CFLAGS) -o $(OUTPUT_DIR)simulator.o simulator.cpp
+
+clean:
+	rm -rf *.o
+	rm $(EXECUTABLE)

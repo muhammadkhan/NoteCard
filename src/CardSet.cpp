@@ -35,7 +35,7 @@ Card* CardSet::cardAt(int index){
 
 void CardSet::save(std::string path){
   std::ofstream outputFile;
-  outputFile.open (path.c_str());
+  outputFile.open (path);
   //TODO things
   outputFile.close();
 }
