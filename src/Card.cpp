@@ -8,6 +8,10 @@ Card::Card() : frontText(""), backText(""){
   showing = FRONT;
 }
 
+Card::Card(std::string f, std::string b) : frontText(f), backText(b){
+  showing = FRONT;
+}
+
 Card::~Card(){
 
 }
@@ -15,6 +19,14 @@ Card::~Card(){
 std::string Card::getVisibleText(){
   if(!isFlippedOver())
     return frontText;
+  return backText;
+}
+
+std::string Card::getFrontText() const{
+  return frontText;
+}
+
+std::string Card::getBackText() const{
   return backText;
 }
 
@@ -33,4 +45,8 @@ void Card::flip(){
 
 bool Card::isFlippedOver(){
   return (showing == BACK);
+}
+
+bool Card::operator==(const Card& rhs){
+  return ((frontText == rhs.getFrontText()) && (backText == rhs.getBackText()));
 }
