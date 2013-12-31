@@ -1,6 +1,9 @@
 #include "CardSet.h"
 #include <iostream>
 #include <fstream>
+#include <vector>
+
+std::vector<Card*> cardList;
 
 CardSet::CardSet(std::string n) : name(n), cur_path(""){
 
@@ -24,7 +27,10 @@ void CardSet::addCard(Card* c){
 void CardSet::removeCard(Card* c){
   std::vector<Card*>::iterator iter;
   for(iter = cardList.begin(); iter != cardList.end(); ++iter){
-    
+    if(**iter == *c){
+      cardList.erase(iter);
+      return;
+    }
   }
 }
 
@@ -32,8 +38,8 @@ void CardSet::clear(){
   cardList.clear();
 }
 
-Card* CardSet::cardAt(int index){
-  return NULL;
+Card* CardSet::cardAt(unsigned int index){
+  return cardList.at(index);
 }
 
 void CardSet::save(std::string path){
