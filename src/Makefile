@@ -3,7 +3,7 @@ CC = g++
 CFLAGS = -std=c++11 -Wall -c
 OUTPUT_DIR = ./bin/
 EXECUTABLE = notecard
-MAIN = TestCardSet2
+MAIN = simulator
 
 all: $(EXECUTABLE)
 

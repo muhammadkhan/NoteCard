@@ -11,7 +11,7 @@ std::vector<Card*> cardList;
 
 /* LOCAL FUNCTIONS, UNEXPOSED THROUGH INTERFACE */
 
-std::string fixName(std::string path){
+std::string fixPath(std::string path){
   size_t last_dot = path.find_last_of('.');
   if(last_dot == std::string::npos){
     return (path + ".set");
@@ -32,7 +32,7 @@ CardSet::CardSet(std::string n) : name(n), cur_path(""){
 
 }
 
-CardSet::CardSet(std::string n, std::string path) : name(n), cur_path(fixName(path){
+CardSet::CardSet(std::string n, std::string path) : name(n), cur_path(fixPath(path)){
   load(cur_path);
 }
 
@@ -80,8 +80,8 @@ void CardSet::save(){
 void CardSet::save(std::string path){
   std::ofstream outputFile;
   std::vector<Card*>::iterator iter;
-  outputFile.open(fixName(path);
-  outputFile << cardList.size() << std::endl;
+  outputFile.open(fixPath(path));
+  outputFile << cardList.size() << " " << name << std::endl;
   for(iter = cardList.begin(); iter != cardList.end(); ++iter){
     outputFile << (*iter)->getFrontText();
     outputFile << " " << DELIMITER << " ";
@@ -93,11 +93,14 @@ void CardSet::save(std::string path){
 
 void CardSet::load(std::string path){
   std::ifstream cardSetFile;
+  std::string n;
   int T, i;
-  if(cur_path.length == 0)
-    cur_path = path;
-  cardSetFile.open(path);
+  if(cur_path.length() == 0)
+    cur_path = fixPath(path);
+  cardSetFile.open(fixPath(path));
   cardSetFile >> T;
+  cardSetFile >> n;
+  name = n;
   for(i = 0; i < T; i++){
     bool foundDelim = false;
     std::string token;
