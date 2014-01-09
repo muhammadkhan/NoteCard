@@ -16,7 +16,9 @@ class CardSet{
   void clear();
   Card* cardAt(unsigned int index);
   void save(std::string path);
+  void save();
   void load(std::string path);
+  unsigned int size();
 };
 
 #endif /*CARDSET_H*/

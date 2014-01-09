@@ -41,6 +41,8 @@ void Card::setBackText(std::string txt){
 void Card::flip(){
   if(showing == FRONT)
     showing = BACK;
+  else
+    showing = FRONT;
 }
 
 bool Card::isFlippedOver(){
