@@ -1,9 +1,19 @@
-#include "CardSet.h"
-#include "Card.h"
 #include <iostream>
 #include <cstdlib>
+#include "CardSet.h"
+#include "Card.h"
 
 using namespace std;
+
+void printCardSetContents(CardSet& cset){
+  cout << "This card set has " << cset.size() << " cards in it" << endl;
+  if(cset.size() > 0){
+    unsigned int i;
+    for(i = 0; i < cset.size(); i++){
+      cout << "Card #" << (i + 1) << ":" << endl;
+    }
+  }
+}
 
 int main(){
   int num_options = 2;
@@ -36,5 +46,6 @@ int main(){
     cout << endl << endl << endl;
     cset = new CardSet("", p);
   }
+  printCardSetContents(*cset);
   return 0;
 }
