@@ -32,8 +32,9 @@ CardSet::CardSet(std::string n) : name(n), cur_path(""){
 
 }
 
-CardSet::CardSet(std::string n, std::string path) : name(n), cur_path(fixPath(path)){
-  load(cur_path);
+CardSet::CardSet(std::string n, std::string path, bool ld) : name(n), cur_path(fixPath(path)){
+  if(ld)
+    load(cur_path);
 }
 
 CardSet::~CardSet(){

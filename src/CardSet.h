@@ -9,7 +9,7 @@ class CardSet{
   std::string cur_path;
  public:
   CardSet(std::string n);
-  CardSet(std::string n, std::string path);
+  CardSet(std::string n, std::string path, bool ld = true);
   ~CardSet();
   unsigned int size();
   void addCard(Card* c, int pos = -1 );
