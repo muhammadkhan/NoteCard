@@ -11,14 +11,15 @@ class CardSet{
   CardSet(std::string n);
   CardSet(std::string n, std::string path);
   ~CardSet();
-  void addCard(Card* c);
+  unsigned int size();
+  void addCard(Card* c, int pos = -1 );
   void removeCard(Card* c);
+  void removeCard(unsigned int pos);
   void clear();
   Card* cardAt(unsigned int index);
   void save(std::string path);
   void save();
   void load(std::string path);
-  unsigned int size();
 };
 
 #endif /*CARDSET_H*/

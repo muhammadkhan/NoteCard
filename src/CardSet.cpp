@@ -47,8 +47,13 @@ unsigned int CardSet::size(){
   return cardList.size();
 }
 
-void CardSet::addCard(Card* c){
-  cardList.push_back(c);
+void CardSet::addCard(Card* c, int pos){
+  if(pos == -1 || pos >= size() - 1)
+    cardList.push_back(c);
+  else {
+    std::vector<Card*>::iterator iter = cardList.begin();
+    cardList.insert(iter + pos, c);
+  }
 }
 
 void CardSet::removeCard(Card* c){
@@ -67,6 +72,14 @@ void CardSet::clear(){
 
 Card* CardSet::cardAt(unsigned int index){
   return cardList.at(index);
+}
+
+void CardSet::removeCard(unsigned int pos){
+  if(pos < 0 || pos >= size()){
+    std::cerr << "This is an invalid position" << std::endl;
+    return;
+  }
+  return removeCard(cardAt(pos));
 }
 
 void CardSet::save(){
