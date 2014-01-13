@@ -10,19 +10,22 @@ void printCardSetContents(CardSet& cset){
   if(cset.size() > 0){
     unsigned int i;
     for(i = 0; i < cset.size(); i++){
-      cout << "Card #" << (i + 1) << ":" << endl;
+      Card* c = cset.cardAt(i);
+      cout << "Card #" << (i + 1) << ": " << c->getFrontText() << endl;
     }
   }
 }
 
-int main(){
-  int num_options = 2;
-  int option = -1;
-  CardSet* cset = NULL;
+void printTitle(){
   cout<<"============================================"<<endl;
   cout << "NOTECARD by Muhammad Khan" << endl;
   cout<<"============================================"<<endl;
   cout << endl << endl;
+}
+
+void createNew_or_loadExisting(CardSet*& cset){
+  int num_options = 2;
+  int option = -1;
   cout << "Please enter the number corresponding to the action you wish to perform:" << endl;
   cout << "0: Create new set of flashcards" << endl;
   cout << "1: Open a set of existing flashcards" << endl;
@@ -46,6 +49,21 @@ int main(){
     cout << endl << endl << endl;
     cset = new CardSet("", p);
   }
+}
+
+void cardActions(Cardset*& cset, int& response){
+
+}
+
+int main(){
+  CardSet* cset = NULL;
+  int response = -1;
+  printTitle();
+  createNew_or_loadExisting(cset);
   printCardSetContents(*cset);
+  cout << endl;
+  do{
+    cardActions(cset, response);
+  } while(response == -1);
   return 0;
 }
