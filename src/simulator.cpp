@@ -98,7 +98,24 @@ void newCard(CardSet*& cset){
   }
   cset->save();
   cout << endl << endl;
-  cout << "New card was added! This set now has " << cset->size() << " cards" << endl << endl;
+  cout << "New card was added! This set now has " << cset->size() << " card(s)" << endl << endl;
+}
+
+void remCard(CardSet*& cset){
+  int cardnum = -1;
+  unsigned int s = cset->size();
+  printCardSetContents(*cset);
+  cout << endl << endl;
+  cout << "Please indicate the number of the card you would like to remove:" << endl << endl;
+  while(cardnum <= 0 || cardnum > s){
+    cin >> cardnum;
+    if(cardnum <= 0 || cardnum > s)
+      cout << "Invalid number, please select an appropriate card: ";
+  }
+  cset->removeCard(cardnum - 1);
+  cset->save();
+  cout << endl << endl;
+  cout << "Card was removed! This set now has " << cset->size() << " card(s)" << endl << endl;
 }
 
 void cardActions(CardSet*& cset, int& response){
@@ -124,7 +141,7 @@ void cardActions(CardSet*& cset, int& response){
   if(response == 0){
     newCard(cset);
   } else if(response == 1){
-
+    remCard(cset);
   } else if(response == 2){
 
   } else if(response == 3){
